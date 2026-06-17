@@ -443,6 +443,49 @@
       .app { border-radius: 40px; overflow: hidden; box-shadow: 0 30px 80px rgba(70,65,56,.12); }
       .hero { min-height: 820px; }
     }
+    .trip-info{
+  padding: 12px 20px 28px;
+}
+
+.trip-info-title{
+  text-align:center;
+  font-size:11px;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--driftwood);
+  margin:0 0 16px;
+}
+
+.trip-info-card{
+  background:rgba(255,255,255,.55);
+  border:1px solid rgba(228,220,208,.8);
+  border-radius:24px;
+  padding:16px 20px;
+}
+
+.trip-info-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 0;
+}
+
+.trip-info-row:not(:last-child){
+  border-bottom:1px dashed rgba(184,174,163,.25);
+}
+
+.trip-label{
+  font-size:12px;
+  color:var(--ink);
+}
+
+.trip-code{
+  font-family:'Courier New', monospace;
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:.08em;
+  color:var(--ocean-deep);
+}
   </style>
 </head>
 <body>
@@ -614,14 +657,6 @@
         </article>
       </section>
 
-      <section id="reservations">
-        <div class="section-head"><span class="section-kicker">Keep it handy</span><h2 class="serif section-title">Reservations</h2></div>
-        <div class="reservations">
-          <div class="res-card"><div><small>Mo & Peggy</small><div class="res-code">Y41732</div></div><div class="price">18,370 円</div></div>
-          <div class="res-card"><div><small>Kevin 家</small><div class="res-code">Z26095</div></div><div class="price">39,160 円</div></div>
-          <div class="res-card"><div><small>Shun 家</small><div class="res-code">X20804</div></div><div class="price">20,000 円</div></div>
-        </div>
-      </section>
 
       <section id="picks">
         <div class="section-head"><span class="section-kicker">Places we saved</span><h2 class="serif section-title">Summer Picks</h2><p class="section-desc">不是只給最後一天用的清單。每天有空檔、想喝咖啡或找點心時，都可以從這裡挑一間。</p></div>
@@ -654,6 +689,26 @@
         </div>
       </section>
 
+      <section class="trip-info">
+  <h3 class="trip-info-title">RENTAL CAR</h3>
+
+  <div class="trip-info-card">
+    <div class="trip-info-row">
+      <span class="trip-label">Mo & Peggy</span>
+      <span class="trip-code">Y41732</span>
+    </div>
+
+    <div class="trip-info-row">
+      <span class="trip-label">Kevin Family</span>
+      <span class="trip-code">Z26095</span>
+    </div>
+
+    <div class="trip-info-row">
+      <span class="trip-label">Shun Family</span>
+      <span class="trip-code">X20804</span>
+    </div>
+  </div>
+</section>
       <section id="tips">
         <div class="section-head"><span class="section-kicker">Small notes</span><h2 class="serif section-title">Local Tips</h2></div>
         <div class="tips">
