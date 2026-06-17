@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>OKINAWA GETAWAY 2026</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="icon.png" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700;900&display=swap');
+
+    :root {
+      --sand: #f7f2ea;
+      --shell: #fffdf8;
+      --paper: #fbf8f1;
+      --ocean: #9fbfc5;
+      --ocean-deep: #6d9299;
+      --seafoam: #dce9e5;
+      --seafoam-soft: #edf5f2;
+      --driftwood: #b7ab9c;
+      --clay: #c6a58f;
+      --ink: #42413d;
+      --muted: #817c73;
+      --line: #e4dcd0;
+      --danger: #8b3f3a;
+      --shadow: 0 18px 45px rgba(81, 76, 66, .08);
+      --radius-lg: 28px;
+      --radius-md: 20px;
+      --radius-sm: 14px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Noto Sans JP', sans-serif;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(220,233,229,.65) 0, transparent 28%),
+        radial-gradient(circle at 85% 8%, rgba(159,191,197,.35) 0, transparent 24%),
+        linear-gradient(180deg, var(--sand), #f9f6ef 45%, #f6f1e8 100%);
+      color: var(--ink);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    .serif { font-family: 'Noto Serif JP', serif; }
+    .app { max-width: 480px; margin: 0 auto; padding-bottom: 96px; }
+
+    .hero {
+      min-height: 92vh;
+      padding: 56px 26px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: rgba(159,191,197,.18);
+      right: -110px;
+      top: 110px;
+      z-index: 0;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 152px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--ocean), transparent);
+      opacity: .55;
+    }
+    .hero > * { position: relative; z-index: 1; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .24em;
+      color: var(--ocean-deep);
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: var(--ocean-deep);
+      opacity: .5;
+    }
+    .hero-title {
+      margin: 34px 0 0;
+      font-size: clamp(46px, 14vw, 66px);
+      line-height: .88;
+      letter-spacing: -.06em;
+      font-weight: 900;
+      color: #383733;
+    }
+    .hero-title span { display: block; }
+    .hero-meta {
+      margin-top: 24px;
+      font-size: 12px;
+      letter-spacing: .18em;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+    .hero-route {
+      margin-top: 10px;
+      color: var(--ocean-deep);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .12em;
+    }
+    .party-card {
+      margin-top: 60px;
+      padding: 24px;
+      background: rgba(255,253,248,.76);
+      border: 1px solid rgba(228,220,208,.85);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+    .party-label {
+      color: var(--driftwood);
+      font-size: 10px;
+      letter-spacing: .24em;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .party-names {
+      margin: 0;
+      font-size: 13px;
+      line-height: 2;
+      letter-spacing: .08em;
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .hero-note {
+      margin-top: 20px;
+      font-size: 12px;
+      color: var(--muted);
+      font-style: italic;
+      letter-spacing: .08em;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      margin: 0 14px 18px;
+      padding: 10px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      background: rgba(251,248,241,.88);
+      border: 1px solid rgba(228,220,208,.9);
+      border-radius: 999px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 12px 30px rgba(75,70,60,.06);
+    }
+    .nav a {
+      text-align: center;
+      text-decoration: none;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      padding: 9px 4px;
+      border-radius: 999px;
+      color: var(--muted);
+    }
+    .nav a:nth-child(1) { background: var(--seafoam-soft); color: var(--ocean-deep); }
+
+    section { padding: 34px 20px; }
+    .section-head { margin-bottom: 22px; }
+    .section-kicker {
+      display: block;
+      color: var(--ocean-deep);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .section-title {
+      margin: 0;
+      font-size: 32px;
+      line-height: 1;
+      letter-spacing: -.04em;
+      font-weight: 900;
+    }
+    .section-desc {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .day {
+      margin-bottom: 30px;
+      padding: 22px;
+      background: rgba(255,253,248,.82);
+      border: 1px solid rgba(228,220,208,.9);
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+    }
+    .day-head {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 16px;
+      align-items: start;
+      margin-bottom: 18px;
+    }
+    .day-num {
+      width: 58px;
+      height: 58px;
+      border-radius: 20px;
+      background: linear-gradient(160deg, var(--seafoam), rgba(159,191,197,.52));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: -.04em;
+    }
+    .day-date {
+      margin: 0 0 4px;
+      color: var(--driftwood);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .day-title {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.2;
+      font-weight: 900;
+      letter-spacing: -.02em;
+    }
+    .weather-link {
+      display: inline-flex;
+      margin-top: 12px;
+      text-decoration: none;
+      color: var(--ocean-deep);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      border-bottom: 1px solid rgba(109,146,153,.4);
+    }
+    .editor-note {
+      margin: 18px 0 22px;
+      padding: 18px 18px 18px 20px;
+      border-left: 3px solid var(--ocean);
+      background: rgba(220,233,229,.35);
+      border-radius: 0 18px 18px 0;
+    }
+    .editor-note span {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--ocean-deep);
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+    .editor-note p { margin: 0; font-size: 13px; color: var(--ink); line-height: 1.9; }
+
+    .timeline { display: grid; gap: 12px; }
+    .item {
+      padding: 16px;
+      background: var(--shell);
+      border: 1px solid rgba(228,220,208,.72);
+      border-radius: 22px;
+    }
+    .item-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .time {
+      color: var(--ocean-deep);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      white-space: nowrap;
+    }
+    .label {
+      padding: 4px 9px;
+      background: var(--seafoam-soft);
+      color: var(--ocean-deep);
+      border-radius: 999px;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .item h4 { margin: 0; font-size: 16px; line-height: 1.4; font-weight: 800; }
+    .item p { margin: 5px 0 0; font-size: 12px; color: var(--muted); line-height: 1.7; }
+    .btns { display: flex; gap: 8px; margin-top: 14px; }
+    .nav-btn, .call-btn {
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .15em;
+    }
+    .nav-btn { flex: 1; background: var(--ocean-deep); color: #fff; }
+    .call-btn { width: 92px; background: #f7f2ea; color: var(--ink); border: 1px solid var(--line); }
+    .quiet { background: rgba(183,171,156,.12); }
+
+    .reservations {
+      display: grid;
+      gap: 12px;
+    }
+    .res-card {
+      padding: 18px;
+      border-radius: 24px;
+      background: rgba(255,253,248,.78);
+      border: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: flex-end;
+    }
+    .res-card small {
+      display: block;
+      color: var(--driftwood);
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .res-code { font-family: 'Noto Serif JP', serif; font-size: 26px; font-weight: 900; letter-spacing: .06em; }
+    .price { color: var(--muted); font-size: 12px; font-weight: 800; white-space: nowrap; }
+
+    .pick-tabs { display: grid; gap: 22px; }
+    .pick-group h3 {
+      margin: 0 0 12px;
+      font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--ocean-deep);
+    }
+    .pick-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+    .pick {
+      padding: 16px;
+      background: rgba(255,253,248,.82);
+      border: 1px solid rgba(228,220,208,.9);
+      border-radius: 22px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+    }
+    .pick h4 { margin: 0; font-size: 14px; line-height: 1.35; }
+    .pick p { margin: 4px 0 0; color: var(--muted); font-size: 11px; line-height: 1.5; }
+    .mini-map {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 54px;
+      height: 34px;
+      border-radius: 999px;
+      background: var(--seafoam);
+      color: var(--ocean-deep);
+      text-decoration: none;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: .08em;
+    }
+
+    .tips { display: grid; gap: 12px; }
+    .tip {
+      padding: 18px;
+      border-radius: 24px;
+      background: rgba(220,233,229,.38);
+      border: 1px solid rgba(159,191,197,.36);
+    }
+    .tip h3 { margin: 0 0 6px; font-size: 15px; }
+    .tip p { margin: 0; font-size: 12px; color: var(--muted); line-height: 1.8; }
+
+    .sos {
+      background: linear-gradient(160deg, #8e4b43, var(--danger));
+      color: #fff;
+      border-radius: 34px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+    .sos h2 { margin: 0 0 22px; font-size: 30px; line-height: 1; }
+    .sos-block { padding: 18px 0; border-top: 1px solid rgba(255,255,255,.22); }
+    .sos-block:first-of-type { border-top: 0; padding-top: 0; }
+    .sos small { display: block; opacity: .68; font-size: 9px; font-weight: 900; letter-spacing: .18em; text-transform: uppercase; }
+    .sos a { text-decoration: none; color: #fff; font-weight: 900; }
+    .sos .call-white {
+      display: inline-flex;
+      margin-top: 12px;
+      background: #fff;
+      color: var(--danger);
+      padding: 11px 18px;
+      border-radius: 999px;
+      font-size: 10px;
+      letter-spacing: .12em;
+    }
+
+    footer {
+      text-align: center;
+      padding: 44px 20px 64px;
+      color: var(--muted);
+    }
+    footer .brand { margin: 0; font-size: 14px; font-weight: 900; letter-spacing: .18em; text-transform: uppercase; }
+    footer .made { margin: 10px 0 0; font-size: 12px; font-style: italic; color: var(--driftwood); }
+
+    @media (min-width: 520px) {
+      body { padding: 20px 0; }
+      .app { border-radius: 40px; overflow: hidden; box-shadow: 0 30px 80px rgba(70,65,56,.12); }
+      .hero { min-height: 820px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="hero" id="home">
+      <div>
+        <div class="eyebrow">Summer Companion</div>
+        <h1 class="serif hero-title"><span>OKINAWA</span><span>GETAWAY</span></h1>
+        <div class="hero-meta">June 20 — June 24, 2026</div>
+        <div class="hero-route">Naha • Onna • Sesoko</div>
+      </div>
+      <div>
+        <div class="party-card">
+          <div class="party-label">with</div>
+          <p class="party-names">
+            Shun & Han & Ophie<br />
+            Mo & Peggy<br />
+            Kevin & Sophia & Riley & Ryden
+          </p>
+        </div>
+        <div class="hero-note">made for a summer with friends</div>
+      </div>
+    </header>
+
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#itinerary">ITINERARY</a>
+      <a href="#picks">PICKS</a>
+      <a href="#tips">TIPS</a>
+      <a href="#emergency">SOS</a>
+    </nav>
+
+    <main>
+      <section id="itinerary">
+        <div class="section-head">
+          <span class="section-kicker">Daily Route</span>
+          <h2 class="serif section-title">Itinerary</h2>
+          <p class="section-desc">每天保留剛好的行程密度，讓大人小孩都能在沖繩的海風裡慢慢移動。</p>
+        </div>
+
+        <article class="day">
+          <div class="day-head">
+            <div class="day-num">01</div>
+            <div>
+              <p class="day-date">JUN 20 SAT / NAHA ARRIVAL</p>
+              <h3 class="serif day-title">First Evening in Okinawa</h3>
+              <a class="weather-link" href="https://tenki.jp/forecast/10/50/9110/47201/" target="_blank" rel="noopener noreferrer">TENKI.JP NAHA ↗</a>
+            </div>
+          </div>
+          <div class="editor-note"><span>Editor's Note</span><p>國際通是許多人認識沖繩的起點。第一天不需要趕行程，散步、吃飯、感受夏日晚風，就是最好的開場。</p></div>
+          <div class="timeline">
+            <div class="item quiet">
+              <div class="item-top"><span class="time">12:00 → 14:40</span><span class="label">FLIGHT</span></div>
+              <h4>JX870 TPE T1 → OKA</h4>
+            </div>
+            <div class="item">
+              <div class="item-top"><span class="time">15:30</span><span class="label">PICKUP</span></div>
+              <h4>Nippon Rent-a-car 波之上分店</h4>
+              <p>全員取車，開啟沖繩自駕模式。</p>
+              <div class="btns"><a class="nav-btn" href="https://maps.app.goo.gl/7vTPq5d5T8atzErE7" target="_blank" rel="noopener noreferrer">MAPS</a><a class="call-btn" href="tel:0988610919">CALL</a></div>
+            </div>
+            <div class="item quiet">
+              <div class="item-top"><span class="time">CHECK-IN</span><span class="label">HOTEL</span></div>
+              <h4>Okinawa Prince Hotel / Hotel Collective</h4>
+              <p>Kevin 一家前往 Ginowan；Shun 一家與 Mo & Peggy 前往 Hotel Collective。</p>
+            </div>
+            <div class="item">
+              <div class="item-top"><span class="time">18:00</span><span class="label">DINNER</span></div>
+              <h4>嚴選阿古豬與島野菜 ちむ</h4>
+              <p>Shun & Mo 兩家，必點阿古豬涮涮鍋。</p>
+              <div class="btns"><a class="nav-btn" href="https://maps.app.goo.gl/29WxscVF4pwBAQ8e8" target="_blank" rel="noopener noreferrer">MAPS</a><a class="call-btn" href="tel:0989172921">CALL</a></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="day">
+          <div class="day-head">
+            <div class="day-num">02</div>
+            <div>
+              <p class="day-date">JUN 21 SUN / AQUARIUM & YAKINIKU</p>
+              <h3 class="serif day-title">City & Sea Life</h3>
+              <a class="weather-link" href="https://tenki.jp/forecast/10/50/9110/47201/" target="_blank" rel="noopener noreferrer">TENKI.JP NAHA ↗</a>
+            </div>
+          </div>
+          <div class="editor-note"><span>Editor's Note</span><p>沖繩的魅力不只有海邊。從水族館到國際通夜晚的人潮，可以看見這座島嶼融合自然與城市的另一面。</p></div>
+          <div class="timeline">
+            <div class="item quiet">
+              <div class="item-top"><span class="time">AM</span><span class="label">FREE</span></div>
+              <h4>Mo & Peggy 自由活動</h4>
+            </div>
+            <div class="item">
+              <div class="item-top"><span class="time">10:00–12:00</span><span class="label">AQUARIUM</span></div>
+              <h4>DMM Kariyushi Aquarium</h4>
+              <p>Shun & Kevin 兩家，炎熱時段也能舒服安排的小孩友善行程。</p>
+              <div class="btns"><a class="nav-btn" href="https://maps.app.goo.gl/Vq29x7sdYmLB3WmQ9" target="_blank" rel="noopener noreferrer">MAPS</a><a class="call-btn" href="tel:0988406900">CALL</a></div>
+            </div>
+            <div class="item quiet"><div class="item-top"><span class="time">NOON–PM</span><span class="label">FREE</span></div><h4>中午到下午自由活動</h4><p>可從 Summer Picks 挑選咖啡、點心或輕食。</p></div>
+            <div class="item">
+              <div class="item-top"><span class="time">18:00</span><span class="label">DINNER</span></div>
+              <h4>燒肉 ROINS 久茂地国際通り店</h4>
+              <p>全員 6 大 3 小。</p>
+              <div class="btns"><a class="nav-btn" href="https://maps.app.goo.gl/U3aWPbzvnb2nymF4A" target="_blank" rel="noopener noreferrer">MAPS</a><a class="call-btn" href="tel:0989435129">CALL</a></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="day">
+          <div class="day-head">
+            <div class="day-num">03</div>
+            <div>
+              <p class="day-date">JUN 22 MON / PARCO & WEST COAST</p>
+              <h3 class="serif day-title">From Naha to the Coast</h3>
+              <a class="weather-link" href="https://tenki.jp/forecast/10/50/9116/47311/" target="_blank" rel="noopener noreferrer">TENKI.JP ONNA ↗</a>
+            </div>
+          </div>
+          <div class="editor-note"><span>Editor's Note</span><p>今天是旅程節奏轉換的一天。從那霸市區移動到西海岸，沖繩最迷人的海景將從今天開始成為窗外的日常。</p></div>
+          <div class="timeline">
+            <div class="item"><div class="item-top"><span class="time">AM</span><span class="label">SHOPPING</span></div><h4>Parco City 自由活動</h4><p>各自 Hotel check out 後前往，午餐可在美食街簡單解決。</p><div class="btns"><a class="nav-btn" href="https://maps.app.goo.gl/aAx5DZ4k9KMm6qpc8" target="_blank" rel="noopener noreferrer">MAPS</a></div></div>
+            <div class="item"><div class="item-top"><span class="time">15:00</span><span class="label">CHECK-IN</span></div><h4>Hyatt Regency Seragaki Island Okinawa</h4><p>全員入住，從這裡開始切換成海島度假節奏。</p><div class="btns"><a class="nav-btn" href="https://maps.app.goo.gl/Li8GprFLTWU4J1fbA" target="_blank" rel="noopener noreferrer">MAPS</a><a class="call-btn" href="tel:0989604321">CALL</a></div></div>
+            <div class="item"><div class="item-top"><span class="time">18:00</span><span class="label">DINNER</span></div><h4>沖繩料理 やんばる</h4><p>6 大 3 小，晚餐回到沖繩料理的樸實風味。</p><div class="btns"><a class="nav-btn" href="https://maps.app.goo.gl/BjfyQWNcYZDKF7jY6" target="_blank" rel="noopener noreferrer">MAPS</a><a class="call-btn" href="tel:0989661450">CALL</a></div></div>
+          </div>
+        </article>
+
+        <article class="day">
+          <div class="day-head">
+            <div class="day-num">04</div>
+            <div>
+              <p class="day-date">JUN 23 TUE / CANOE & AGU PORK HOT POT</p>
+              <h3 class="serif day-title">The Blue of Sesoko</h3>
+              <a class="weather-link" href="https://tenki.jp/forecast/10/50/9116/47311/" target="_blank" rel="noopener noreferrer">TENKI.JP ONNA ↗</a>
+            </div>
+          </div>
+          <div class="editor-note"><span>Editor's Note</span><p>今天的主角是沖繩北部的海。瀨底島周邊以高透明度海域聞名，晴朗時能看見層層漸變的藍色海面。與其追逐行程，不如把時間留給海風、陽光，以及眼前這片令人平靜的風景。</p></div>
+          <div class="timeline">
+            <div class="item quiet"><div class="item-top"><span class="time">AM</span><span class="label">SLOW</span></div><h4>上午各自 chill</h4><p>不排行程的一段時間，也是海島旅行裡很重要的留白。</p></div>
+            <div class="item quiet"><div class="item-top"><span class="time">15:50</span><span class="label">FLIGHT</span></div><h4>Mo & Peggy 返台</h4><p>JX871 OKA → TPE T1。</p></div>
+            <div class="item"><div class="item-top"><span class="time">15:30</span><span class="label">ACTIVITY</span></div><h4>Glass Canoe 30 mins</h4><p>Shun & Kevin 兩家，4 大 3 小。瀨底周邊透明度高，適合慢慢看海色變化。</p><div class="btns"><a class="nav-btn" href="https://maps.app.goo.gl/fNrFKwUhota1iAh19" target="_blank" rel="noopener noreferrer">MAPS</a><a class="call-btn" href="tel:0989662045">CALL</a></div></div>
+            <div class="item"><div class="item-top"><span class="time">18:00</span><span class="label">DINNER</span></div><h4>Ocean Boo! 恩納万座店</h4><p>Shun & Kevin 兩家，晚餐是阿古豬鍋，不是 steak。</p><div class="btns"><a class="nav-btn" href="https://maps.app.goo.gl/Zceq8wFe4rZMFuw76" target="_blank" rel="noopener noreferrer">MAPS</a><a class="call-btn" href="tel:05055964893">CALL</a></div></div>
+          </div>
+        </article>
+
+        <article class="day">
+          <div class="day-head">
+            <div class="day-num">05</div>
+            <div>
+              <p class="day-date">JUN 24 WED / HOMEWARD</p>
+              <h3 class="serif day-title">Slow Goodbye</h3>
+              <a class="weather-link" href="https://tenki.jp/forecast/10/50/9116/47311/" target="_blank" rel="noopener noreferrer">TENKI.JP ONNA ↗</a>
+            </div>
+          </div>
+          <div class="editor-note"><span>Editor's Note</span><p>回程前不妨放慢腳步。最後一杯咖啡、最後一眼海景，往往會成為旅程結束後最常想起的畫面。</p></div>
+          <div class="timeline">
+            <div class="item quiet"><div class="item-top"><span class="time">AM</span><span class="label">FREE</span></div><h4>上午自由活動</h4><p>可以從 Summer Picks 選一間順路咖啡或點心。</p></div>
+            <div class="item quiet"><div class="item-top"><span class="time">11:00</span><span class="label">CHECK-OUT</span></div><h4>Hyatt check out</h4></div>
+            <div class="item"><div class="item-top"><span class="time">13:30</span><span class="label">RETURN CAR</span></div><h4>Nippon Rent-a-car 波之上分店</h4><div class="btns"><a class="nav-btn" href="https://maps.app.goo.gl/7vTPq5d5T8atzErE7" target="_blank" rel="noopener noreferrer">MAPS</a><a class="call-btn" href="tel:0988610919">CALL</a></div></div>
+            <div class="item quiet"><div class="item-top"><span class="time">15:50 → 16:25</span><span class="label">FLIGHT</span></div><h4>JX871 OKA → TPE T1</h4></div>
+          </div>
+        </article>
+      </section>
+
+      <section id="reservations">
+        <div class="section-head"><span class="section-kicker">Keep it handy</span><h2 class="serif section-title">Reservations</h2></div>
+        <div class="reservations">
+          <div class="res-card"><div><small>Mo & Peggy</small><div class="res-code">Y41732</div></div><div class="price">18,370 円</div></div>
+          <div class="res-card"><div><small>Kevin 家</small><div class="res-code">Z26095</div></div><div class="price">39,160 円</div></div>
+          <div class="res-card"><div><small>Shun 家</small><div class="res-code">X20804</div></div><div class="price">20,000 円</div></div>
+        </div>
+      </section>
+
+      <section id="picks">
+        <div class="section-head"><span class="section-kicker">Places we saved</span><h2 class="serif section-title">Summer Picks</h2><p class="section-desc">不是只給最後一天用的清單。每天有空檔、想喝咖啡或找點心時，都可以從這裡挑一間。</p></div>
+        <div class="pick-tabs">
+          <div class="pick-group"><h3>☕ Coffee & Brunch</h3><div class="pick-grid">
+            <div class="pick"><div><h4>Blue Entrance Kitchen</h4><p>中部早午餐，適合移動日補充一點能量。</p></div><a class="mini-map" href="https://maps.app.goo.gl/CsLFMuhfqoNSdoQF7?g_st=ic" target="_blank" rel="noopener noreferrer">MAP</a></div>
+            <div class="pick"><div><h4>Baywich</h4><p>三明治輕食，海邊活動前後都很方便。</p></div><a class="mini-map" href="https://maps.app.goo.gl/tS7c2xnVaij3PERz5?g_st=ic" target="_blank" rel="noopener noreferrer">MAP</a></div>
+            <div class="pick"><div><h4>Camel Sandwich & Smoothie</h4><p>本部方向的輕食選擇，適合北部兜風順路。</p></div><a class="mini-map" href="https://maps.app.goo.gl/pz39cVe63dufjAbB6?g_st=ic" target="_blank" rel="noopener noreferrer">MAP</a></div>
+            <div class="pick"><div><h4>Ryukyu Beach Club</h4><p>Hyatt 旁邊，適合不想跑太遠的海邊空檔。</p></div><a class="mini-map" href="https://maps.app.goo.gl/CqExWWWtTuhvykdLA?g_st=ic" target="_blank" rel="noopener noreferrer">MAP</a></div>
+            <div class="pick"><div><h4>Kiseki</h4><p>美國村附近，適合散步時順路安排。</p></div><a class="mini-map" href="https://maps.app.goo.gl/mvkQDWg6HWcbLv6K7?g_st=ic" target="_blank" rel="noopener noreferrer">MAP</a></div>
+            <div class="pick"><div><h4>Banta Cafe by Hoshino</h4><p>海景咖啡，適合留給不趕時間的午後。</p></div><a class="mini-map" href="https://maps.app.goo.gl/w4m9B6ZBwDjWnZbH8?g_st=ic" target="_blank" rel="noopener noreferrer">MAP</a></div>
+            <div class="pick"><div><h4>Shinmei Coffee</h4><p>黑糖牛奶，北部路線上很適合短暫停留。</p></div><a class="mini-map" href="https://maps.app.goo.gl/3zFvWMHoeUDZvr3n8?g_st=ic" target="_blank" rel="noopener noreferrer">MAP</a></div>
+            <div class="pick"><div><h4>Yoho</h4><p>中部冰品冷飲，夏天很實用。</p></div><a class="mini-map" href="https://maps.app.goo.gl/Cqc6K9rugmrrspGU6?g_st=ic" target="_blank" rel="noopener noreferrer">MAP</a></div>
+          </div></div>
+
+          <div class="pick-group"><h3>🍦 Sweets & Snacks</h3><div class="pick-grid">
+            <div class="pick"><div><h4>牛骨琉球拉麵</h4><p>美國村附近，想吃鹹食時的備案。</p></div><a class="mini-map" href="https://maps.app.goo.gl/H9rTw1nQNLRTwkZLA?g_st=ic" target="_blank" rel="noopener noreferrer">MAP</a></div>
+            <div class="pick"><div><h4>炸蝦豬肉蛋飯糰</h4><p>國際通散步時，最適合快速補一份。</p></div><a class="mini-map" href="https://maps.app.goo.gl/h98qQgpymirSJWq59?g_st=ic" target="_blank" rel="noopener noreferrer">MAP</a></div>
+            <div class="pick"><div><h4>Hoppe Pan</h4><p>當地知名麵包店，適合早餐或車上點心。</p></div><a class="mini-map" href="https://maps.app.goo.gl/7CgxponsJGURgfzK8?g_st=ic" target="_blank" rel="noopener noreferrer">MAP</a></div>
+            <div class="pick"><div><h4>Calbee+ 現炸薯條</h4><p>國際通小點心，小朋友通常不會反對。</p></div><a class="mini-map" href="https://maps.app.goo.gl/grLeCs98zHggrWop7?g_st=ic" target="_blank" rel="noopener noreferrer">MAP</a></div>
+            <div class="pick"><div><h4>Houki Boshi</h4><p>港川可麗露，適合當作一份小小甜點記憶。</p></div><a class="mini-map" href="https://maps.app.goo.gl/wQQ3mMTakinppXZ2A?g_st=ic" target="_blank" rel="noopener noreferrer">MAP</a></div>
+            <div class="pick"><div><h4>Fluffy Coconut</h4><p>中部椰子甜點，天氣越熱越值得來。</p></div><a class="mini-map" href="https://maps.app.goo.gl/Wt8zwUofCKbdLDGJ7?g_st=ic" target="_blank" rel="noopener noreferrer">MAP</a></div>
+            <div class="pick"><div><h4>A&W 牧港</h4><p>沖繩經典速食，適合當成輕鬆備案。</p></div><a class="mini-map" href="https://maps.app.goo.gl/sj7yZLNJpkATbhA49?g_st=ic" target="_blank" rel="noopener noreferrer">MAP</a></div>
+          </div></div>
+
+          <div class="pick-group"><h3>🌙 Late Night</h3><div class="pick-grid">
+            <div class="pick"><div><h4>Lucky Maximum</h4><p>國際通宵夜備案，營業到 23:00。</p></div><a class="mini-map" href="https://maps.app.goo.gl/94ZSaD79ATtVVD3t5?g_st=ic" target="_blank" rel="noopener noreferrer">MAP</a></div>
+            <div class="pick"><div><h4>Midnight Sweets</h4><p>國際通甜點宵夜，營業到 01:00。</p></div><a class="mini-map" href="https://maps.app.goo.gl/jrbSsq558iTgJQmK7?g_st=ic" target="_blank" rel="noopener noreferrer">MAP</a></div>
+          </div></div>
+        </div>
+      </section>
+
+      <section id="tips">
+        <div class="section-head"><span class="section-kicker">Small notes</span><h2 class="serif section-title">Local Tips</h2></div>
+        <div class="tips">
+          <div class="tip"><h3>沖繩夏季穿搭</h3><p>六月底白天體感約 30°C，紫外線強烈。帽子與防曬用品的實用程度通常比薄外套更高。</p></div>
+          <div class="tip"><h3>開車文化</h3><p>沖繩車速普遍較慢，右轉與停讓行人執行得相當確實，旅途中不妨把節奏放慢一些。</p></div>
+          <div class="tip"><h3>海邊活動</h3><p>即使陰天，沖繩海域的紫外線仍然很強。海邊活動後建議立即補充水分與防曬。</p></div>
+          <div class="tip"><h3>帶小孩旅行</h3><p>行程中留一點「什麼都不做」的時間，通常比多塞一個景點更實用。小孩睡著時，大人剛好喝咖啡。</p></div>
+        </div>
+      </section>
+
+      <section id="emergency">
+        <div class="sos">
+          <h2 class="serif">Emergency SOS</h2>
+          <div class="sos-block">
+            <small>Japan Visitor Hotline</small>
+            <p><a href="tel:05038162787">050-3816-2787</a></p>
+            <p style="font-size:12px; opacity:.78; margin:0;">24小時對應英／中／韓。生病、受傷或事故時撥打。</p>
+            <a class="call-white" href="tel:05038162787">立即撥打</a>
+          </div>
+          <div class="sos-block">
+            <small>台北駐日經濟文化代表處 那霸分處</small>
+            <p style="margin-bottom:6px;"><a href="tel:+81988627008">+81-98-862-7008</a></p>
+            <p style="margin-top:0;"><a href="tel:0988627008">098-862-7008</a></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p class="brand">Okinawa Getaway 2026</p>
+      <p class="made">made for a summer with friends</p>
+    </footer>
+  </div>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
+  </script>
+</body>
+</html>
