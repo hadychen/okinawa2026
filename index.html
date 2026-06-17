@@ -212,7 +212,7 @@
       border: 1px solid rgba(228,220,208,.9);
       border-radius: 32px;
       box-shadow: var(--shadow);
-      scroll-margin-top: 170px;
+      scroll-margin-top: 190px;
     }
     .day-head {
       display: grid;
@@ -486,6 +486,32 @@
   letter-spacing:.08em;
   color:var(--ocean-deep);
 }
+    .hero-story{
+  text-align:center;
+  margin-top:42px;
+}
+
+.hero-divider{
+  width:80px;
+  height:1px;
+  background:linear-gradient(90deg, transparent, var(--ocean), transparent);
+  margin:30px auto 34px;
+}
+
+.hero-with{
+  font-size:10px;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:var(--driftwood);
+  margin-bottom:24px;
+}
+
+.hero-party p{
+  margin:12px 0;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.05em;
+}
   </style>
 </head>
 <body>
@@ -500,16 +526,23 @@
       <div>
         
         <div class="hero-story">
-          <div class="hero-quote">five days of ocean breeze,<br>good food and slow moments</div>
-          <div class="hero-divider"></div>
-          <div class="hero-with">with</div>
-          <div class="hero-party">
-            <p>Shun & Han & Ophie</p>
-            <p>Mo & Peggy</p>
-            <p>Kevin & Sophia & Riley & Ryden</p>
-          </div>
-          <div class="hero-note">Let's make some good memories.</div>
-        </div>
+  <div class="hero-quote">
+    five days of ocean breeze,<br>
+    good food and slow moments
+  </div>
+
+  <div class="hero-divider"></div>
+
+  <div class="hero-with">with</div>
+
+  <div class="hero-party">
+    <p>Shun &amp; Han &amp; Ophie</p>
+    <p>Mo &amp; Peggy</p>
+    <p>Kevin &amp; Sophia &amp; Riley &amp; Ryden</p>
+  </div>
+
+  <div class="hero-note">Let's make some good memories.</div>
+</div>
     
       </div>
     </header>
