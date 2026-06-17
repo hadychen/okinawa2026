@@ -1,9 +1,15 @@
 {
-  "name": "沖繩2026自駕",
+  "name": "沖繩夏日自駕",
   "short_name": "沖繩APP",
   "start_url": "index.html",
   "display": "standalone",
-  "background_color": "#F8F9FA",
+  "background_color": "#ffffff",
   "theme_color": "#000000",
-  "icons": [{ "src": "[link removed]", "sizes": "512x512", "type": "image/png" }]
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
 }
