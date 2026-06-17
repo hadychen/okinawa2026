@@ -66,16 +66,6 @@
       top: 110px;
       z-index: 0;
     }
-    .hero::after {
-      content: "";
-      position: absolute;
-      left: 24px;
-      right: 24px;
-      bottom: 132px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--ocean), transparent);
-      opacity: .45;
-    }
     .hero > * { position: relative; z-index: 1; }
     .eyebrow {
       display: inline-flex;
@@ -180,7 +170,10 @@
     }
     .nav a:nth-child(1) { background: var(--seafoam-soft); color: var(--ocean-deep); }
 
-    section { padding: 34px 20px; }
+    section {
+  padding: 34px 20px;
+  scroll-margin-top: 180px;
+}
     .section-head { margin-bottom: 22px; }
     .section-kicker {
       display: block;
