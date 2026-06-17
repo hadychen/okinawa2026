@@ -828,6 +828,15 @@
 
   window.addEventListener("scroll", updateActiveNav);
   window.addEventListener("load", updateActiveNav);
+
+  const backToTop = document.getElementById("backToTop");
+
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
 </script>
 </body>
 </html>
