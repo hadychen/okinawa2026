@@ -47,7 +47,7 @@
     .app { max-width: 480px; margin: 0 auto; padding-bottom: 96px; }
 
     .hero {
-      min-height: 60vh;
+      min-height: 72vh;
       padding: 56px 26px 32px;
       display: flex;
       flex-direction: column;
@@ -71,10 +71,10 @@
       position: absolute;
       left: 24px;
       right: 24px;
-      bottom: 152px;
+      bottom: 132px;
       height: 1px;
       background: linear-gradient(90deg, transparent, var(--ocean), transparent);
-      opacity: .55;
+      opacity: .45;
     }
     .hero > * { position: relative; z-index: 1; }
     .eyebrow {
@@ -133,12 +133,14 @@
       letter-spacing: .24em;
       font-weight: 900;
       text-transform: uppercase;
-      margin-bottom: 14px;
+      
+      margin-top: 12px;
+      margin-bottom: 24px;
     }
     .party-names {
       margin: 0;
       font-size: 13px;
-      line-height: 2;
+      line-height: 2.3;
       letter-spacing: .08em;
       color: var(--ink);
       font-weight: 600;
@@ -210,6 +212,7 @@
       border: 1px solid rgba(228,220,208,.9);
       border-radius: 32px;
       box-shadow: var(--shadow);
+      scroll-margin-top: 170px;
     }
     .day-head {
       display: grid;
